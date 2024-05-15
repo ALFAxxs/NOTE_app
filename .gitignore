@@ -137,5 +137,6 @@ GitHub.sublime-settings
 !.vscode/extensions.json 
 .history
 .gitignore
-Note_app/migrations/
-\Note_app\migrations
+**/migrations/**
+!**/migrations
+!**/migrations/__init__.py

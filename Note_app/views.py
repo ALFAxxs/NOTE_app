@@ -36,6 +36,7 @@ def registration_page(request):
         return redirect('login')
     return render(request, 'registration.html')
 
+login_required('login')
 def add_note(request, id):
     if request.method == 'POST':
         try:
@@ -50,7 +51,7 @@ def add_note(request, id):
             return HttpResponse("User not found", status=404)
     return render(request, 'add_note.html')
 
-
+login_required('login')
 def posts_page(request, id):
     user = get_object_or_404(User, id=id)
     notes = Note.objects.filter(owner=user)
@@ -83,6 +84,11 @@ def note_delete(request, id):
     }
     return redirect(reverse('posts', kwargs={'id': user_id}))
 
+login_required('login')
 def general_page(request, id):
     user = get_object_or_404(User,id=id)
     return render(request, 'general.html', {'user':user})
+
+def logout_user(request):
+    logout(request)
+    return redirect('login')

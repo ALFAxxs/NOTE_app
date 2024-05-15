@@ -10,6 +10,7 @@ urlpatterns = [
     path('general/<int:id>/', views.general_page, name='general'),
 
     
-    path('delete/<int:id>/', views.note_delete, name='delete'),
-    path('update/<int:pk>', views.note_update, name='update')
+    path('posts/delete/<int:id>/', views.note_delete, name='delete'),
+    path('posts/update/<int:pk>', views.note_update, name='update'),
+    path('logout', views.logout_user, name='logout')
 ]
